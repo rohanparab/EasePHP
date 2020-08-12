@@ -4,7 +4,7 @@
 
     function secureVar($var){
         global $conn;
-        return mysqli_real_escape_string($conn, $var);
+        return htmlspecialchars(mysqli_real_escape_string($conn, $var), ENT_QUOTES, 'UTF-8');
     }
 
     function secureSelf(){
@@ -21,15 +21,6 @@
 
     function alert($msg){
         echo "<script>alert('$msg');</script>";
-    }
-
-    function input($type, $name, $required){
-        if($required == 1){
-            $required = "required";
-        }else{
-            $required = "";
-        }
-        echo "<input type='$type' name='$name' $required>";
     }
 
     function breakln(){
